@@ -3,8 +3,6 @@ package ru.netology.javaqadiplom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 public class CreditAccountTest {
 
     @Test
@@ -19,5 +17,4 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
-    
 }
