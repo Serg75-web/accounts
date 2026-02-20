@@ -35,6 +35,19 @@ public class CreditAccountTest {
     }
 
     @Test
+    public void nullRate() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new CreditAccount(0, 5_000, 0);
+        });  // попытка создания кредитного счета с нулевой ставкой кредитования
+
+        String expectedMessage = "Накопительная ставка не может быть отрицательной, а у вас: 0";
+        String actualMessage = exception.getMessage();
+
+        Assertions.assertEquals(expectedMessage, actualMessage);
+
+    }
+
+    @Test
     public void negativeInitialBalance() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             new CreditAccount(-1_000, 5_000, 15);
