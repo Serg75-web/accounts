@@ -69,20 +69,22 @@ public class CreditAccountTest {
 
         boolean result = account.pay(-6_000);  // попытка оплаты с карты отрицательной суммы
 
-        Assertions.assertEquals(false, account.getBalance());
+        Assertions.assertFalse(result);
+        Assertions.assertEquals(0, account.getBalance());
     }
 
     @Test
     public void payNullCard() {
         CreditAccount account = new CreditAccount(
-                0,
+                100,
                 5_000,
                 15
         );
 
         boolean result = account.pay(0); // попытка оплаты с карты нулевой суммы
 
-        Assertions.assertEquals(false, account.getBalance());
+        Assertions.assertFalse(result);
+        Assertions.assertEquals(100, account.getBalance());
     }
 
     @Test
@@ -121,7 +123,8 @@ public class CreditAccountTest {
 
         boolean result = account.add(-6_000); // попытка пополнения карты отрицательной суммой
 
-        Assertions.assertEquals(false, account.getBalance());
+        Assertions.assertFalse(result);
+        Assertions.assertEquals(1_000, account.getBalance());
     }
 
     @Test
@@ -134,7 +137,8 @@ public class CreditAccountTest {
 
         boolean result = account.add(0); // попытка пополнения карты нулевой суммой
 
-        Assertions.assertEquals(false, account.getBalance());
+        Assertions.assertFalse(result);
+        Assertions.assertEquals(1_000, account.getBalance());
     }
 
     @Test
