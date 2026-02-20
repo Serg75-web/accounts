@@ -13,13 +13,16 @@ public class Bank {
      * @param amount - сумма перевода
      * @return - true если операция прошла успешно, false иначе
      */
+
+
     public boolean transfer(Account from, Account to, int amount) {
         if (amount <= 0) {
-            return false;
+            return false; // переводим только суммы с положительным числом
         }
         if (from.pay(amount)) {
             to.add(amount);
+            return true; // успешный перевод
         }
-        return true;
+        return false; // операция не удалась при неуспешном переводе
     }
 }
