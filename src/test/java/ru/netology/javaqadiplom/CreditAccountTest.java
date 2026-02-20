@@ -108,7 +108,7 @@ public class CreditAccountTest {
                 15
         );
 
-        boolean result = account.add(6_000); // оплата, при которой баланс должен увеличиться на сумму покупки
+        boolean result = account.add(6_000); // оплата, при которой баланс должен увеличиться на указанную сумму
 
         Assertions.assertEquals(7_000, account.getBalance());
     }
