@@ -66,9 +66,10 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = amount;
+        balance += amount; // увеличиваем баланс на сумму пополнения
         return true;
     }
+
 
     /**
      * Операция расчёта процентов на отрицательный баланс счёта при условии, что
