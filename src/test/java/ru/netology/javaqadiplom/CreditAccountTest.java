@@ -53,7 +53,7 @@ public class CreditAccountTest {
             new CreditAccount(-1_000, 5_000, 15);
         }); // попытка создания кредитного счета с отрицательным начальным балансом
 
-        String expectedMessage = "Начальный баланс не может быть отрицательным, а у вас: -1_000";
+        String expectedMessage = "Начальный баланс не может быть отрицательным, а у вас: -1000";
         String actualMessage = exception.getMessage();
 
         Assertions.assertEquals(expectedMessage, actualMessage);
@@ -65,7 +65,7 @@ public class CreditAccountTest {
             new CreditAccount(0, -5_000, 15);
         }); // попытка создания кредитного счета с отрицательным кредитным лимитом
 
-        String expectedMessage = "Кредитный лимит не может быть отрицательным, а у вас: -5_000";
+        String expectedMessage = "Кредитный лимит не может быть отрицательным, а у вас: -5000";
         String actualMessage = exception.getMessage();
 
         Assertions.assertEquals(expectedMessage, actualMessage);
@@ -157,10 +157,12 @@ public class CreditAccountTest {
     @Test
     public void negativeBalance() {
         CreditAccount account = new CreditAccount(
-                -200,
+                0,
                 500,
                 15
         );
+
+        boolean result = account.pay(200);
 
         Assertions.assertEquals(-30, account.yearChange()); // расчет процентов на отрицательный баланс
     }
@@ -172,6 +174,8 @@ public class CreditAccountTest {
                 500,
                 15
         );
+
+        boolean result = account.pay(200);
 
         Assertions.assertEquals(0, account.yearChange()); // расчет процентов на положительный баланс
     }

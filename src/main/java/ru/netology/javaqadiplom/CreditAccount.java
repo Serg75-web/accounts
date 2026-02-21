@@ -22,6 +22,7 @@ public class CreditAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
+
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
         this.rate = rate;
@@ -79,8 +80,7 @@ public class CreditAccount extends Account {
      * @return
      */
     @Override
-    public int yearChange() {
-        return balance / 100 * rate;
+    public int yearChange() {return balance / 100 * rate;
     }
 
     public int getCreditLimit() {
