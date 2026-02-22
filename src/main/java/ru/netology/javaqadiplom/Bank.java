@@ -1,6 +1,9 @@
 package ru.netology.javaqadiplom;
 
 public class Bank {
+protected int from;
+protected  int to;
+protected int amount;
 
     /**
      * Операция перевода указанной суммы с одного счёта на другой.
@@ -13,6 +16,11 @@ public class Bank {
      * @param amount - сумма перевода
      * @return - true если операция прошла успешно, false иначе
      */
+    public Bank(int from, int to, int amount) {
+        this.from = from;
+        this.to = to;
+        this.amount = amount;
+    }
     public boolean transfer(Account from, Account to, int amount) {
         if (amount <= 0) {
             return false;
