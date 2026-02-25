@@ -3,15 +3,13 @@ package ru.netology.javaqadiplom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 public class CreditAccountTest {
 
     @Test
     public void shouldAddToPositiveBalance() {
         CreditAccount account = new CreditAccount(
                 0,
-                5_000,  // пополнение карты на положительную сумму
+                5_000,
                 15
         );
 
