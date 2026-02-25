@@ -50,10 +50,10 @@ public class CreditAccountTest {
     @Test
     public void negativeInitialBalance() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(-1_000, 5_000, 15);
+            new CreditAccount(-6_000, 5_000, 15);
         }); // попытка создания кредитного счета с отрицательным начальным балансом
 
-        String expectedMessage = "Начальный баланс не может быть отрицательным, а у вас: -1_000";
+        String expectedMessage = "Начальный баланс не может быть отрицательным, а у вас: -1000";
         String actualMessage = exception.getMessage();
 
         Assertions.assertEquals(expectedMessage, actualMessage);
@@ -65,7 +65,7 @@ public class CreditAccountTest {
             new CreditAccount(0, -5_000, 15);
         }); // попытка создания кредитного счета с отрицательным кредитным лимитом
 
-        String expectedMessage = "Кредитный лимит не может быть отрицательным, а у вас: -5_000";
+        String expectedMessage = "Кредитный лимит не может быть отрицательным, а у вас: -5000";
         String actualMessage = exception.getMessage();
 
         Assertions.assertEquals(expectedMessage, actualMessage);
@@ -109,8 +109,8 @@ public class CreditAccountTest {
         );
 
         boolean result = account.pay(2000); // попытка оплаты с карты суммы, при которой баланс становится меньше, чем лимит
-
-        Assertions.assertEquals(false, account.getBalance());
+        Assertions.assertFalse(result); // Проверяем, что операция вернула false
+        Assertions.assertEquals(1000, account.getBalance());
     }
 
     @Test
