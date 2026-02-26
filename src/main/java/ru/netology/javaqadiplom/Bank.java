@@ -17,12 +17,17 @@ public class Bank {
 
     public boolean transfer(Account from, Account to, int amount) {
         if (amount <= 0) {
-            return false; // переводим только суммы с положительным числом
+            return false; // Нельзя переводить отрицательные суммы или ноль
         }
-        if (from.pay(amount)) {
-            to.add(amount);
-            return true; // успешный перевод
+
+        if (from.pay(amount)) {  // если деньги списались успешно, пытаемся добавить их на целевой счет
+            if (to.add(amount)) {
+                return true; // перевод успешен
+            } else {
+                // если add завершился неудачей, откатываем транзакцию и возвращаем деньги на исходный счет
+                from.add(amount);
+            }
         }
-        return false; // операция не удалась при неуспешном переводе
+        return false; // Перевод не удался
     }
 }
